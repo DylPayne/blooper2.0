@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using System.Text;
 
 namespace Blooper.Models
 {
@@ -37,8 +38,33 @@ namespace Blooper.Models
         {
             List<BlooperModel> blooperList = GetBloopers();
 
+            string message = text;
+
+            // Checking if the blooper is a phrase
+            foreach (BlooperModel blooper in blooperList)
+            {
+                if (blooper.word.Contains(" "))
+                {
+                    Console.WriteLine("Phrase: " + blooper.word);
+                    if (text.ToLower().Contains(blooper.word.ToLower()))
+                    {
+                        Console.WriteLine("Text contains phrase");
+                        int c = 0;
+                        string replacement = "";
+                        while (c < blooper.word.Length)
+                        {
+                            replacement += "*";
+                            c++;
+                        }
+                        message = message.ToLower().Replace(blooper.word.ToLower(), replacement);
+
+                    }
+                }
+            }
+
             // Converting text to array of words
-            string[] words = text.Split(' ');
+            Console.WriteLine(message);
+            string[] words = message.Split(' ');
 
             // Looping through each word in the array
             int i = 0;
