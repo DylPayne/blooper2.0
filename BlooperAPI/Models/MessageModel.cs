@@ -5,7 +5,24 @@ namespace Blooper.Models
 {
     public class MessageModel
     {
+        public int id { get; }
         public string text { get; set; }
+        public int to_id { get; set; }
+        public int from_id { get; set; }
+
+        public MessageModel(int id, string text, int to_id, int from_id)
+        {
+            this.id = id;
+            this.text = text;
+            this.to_id = to_id;
+            this.from_id = from_id;
+        }
+        public MessageModel(string text, int to_id, int from_id)
+        {
+            this.text = text;
+            this.to_id = to_id;
+            this.from_id = from_id;
+        }
 
         // This method is used to get the list of bloopers from the database
         // I'm doing this because if I call API endpoint I will have to make the Bloop method async
@@ -34,7 +51,7 @@ namespace Blooper.Models
             return bloopers;
         }
 
-        public static MessageModel Bloop(string text)
+        public static string Bloop(string text)
         {
             List<BlooperModel> blooperList = GetBloopers();
 
@@ -90,7 +107,7 @@ namespace Blooper.Models
                 i++;
             }
 
-            return new MessageModel { text = string.Join(" ", words) };
+            return text = string.Join(" ", words);
         }
     }
 }

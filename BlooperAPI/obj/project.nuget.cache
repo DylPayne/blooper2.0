@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6fy/wAlsQS1sReXnzWFouwZNAKIvZLFQpwQgajW5l1o3jFS5A+JyX4Uw2r2a8FVRfRzd10EK4GjgW+m7YNpaUg==",
+  "dgSpecHash": "cKh1UHBHCeNEOO0IUlHIXMAN3Ad6+zk74DhNiL6Rqzov5y5kzolwEZeXnF9HVaFrPosgAoe2Lg+hiMoDZd+E0A==",
   "success": true,
-  "projectFilePath": "D:\\Dev\\Flash\\Blooper2.0\\Blooper\\Blooper.csproj",
+  "projectFilePath": "D:\\Dev\\Flash\\Blooper2.0\\BlooperAPI\\Blooper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dylan\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\dylan\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
