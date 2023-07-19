@@ -1,0 +1,20 @@
+.words-parent[b-by7web1nqg] {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 400px;
+    justify-content: center;
+    text-align: center;
+    list-style-type: none;
+}
+
+.words[b-by7web1nqg] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    text-align: center;
+}

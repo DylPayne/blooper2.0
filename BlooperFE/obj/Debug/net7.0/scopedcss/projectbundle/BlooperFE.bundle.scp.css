@@ -1,0 +1,295 @@
+/* _content/BlooperFE/Components/WordsModal.razor.rz.scp.css */
+.words-parent[b-by7web1nqg] {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 400px;
+    justify-content: center;
+    text-align: center;
+    list-style-type: none;
+}
+
+.words[b-by7web1nqg] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    text-align: center;
+}
+/* _content/BlooperFE/Pages/Chat.razor.rz.scp.css */
+.chat-parent[b-8yvhgbpjcn] {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 400px;
+    justify-content: center;
+}
+
+[b-8yvhgbpjcn] .chat-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: lightgray;
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+}
+
+[b-8yvhgbpjcn] .chat-link:hover {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+/* _content/BlooperFE/Pages/Index.razor.rz.scp.css */
+[b-lmzw31fyw1] .login-form {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+[b-lmzw31fyw1] .login-form input {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+[b-lmzw31fyw1] .login-form button {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+/* _content/BlooperFE/Pages/MessageEdit.razor.rz.scp.css */
+.messages-container[b-sy86fi9b3z] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    height: 200px;
+    width: 600px;
+    padding: 20px;
+    border: 3px solid lightgray;
+}
+
+[b-sy86fi9b3z] message-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid red;
+}
+
+[b-sy86fi9b3z] .message-input {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.message-send[b-sy86fi9b3z] {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+/* _content/BlooperFE/Pages/Messages.razor.rz.scp.css */
+.messages-container[b-z9kwl2q7w1] {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: calc(100vh - 300px);
+    width: 600px;
+    padding: 20px;
+    border: 3px solid lightgray;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.message-parent[b-z9kwl2q7w1] {
+    max-width: 450px;
+    min-width: 100px;
+    background-color: mediumseagreen;
+    color: black;
+    padding: 7px 15px;
+    border-radius: 3px;
+    align-self: end;
+}
+
+.message-parent-from[b-z9kwl2q7w1] {
+    max-width: 450px;
+    min-width: 100px;
+    background-color: lightgray;
+    color: black;
+    padding: 7px 15px;
+    border-radius: 3px;
+    align-self: end;
+    align-self: start;
+}
+
+.input-container[b-z9kwl2q7w1] {
+    position: sticky;
+    bottom: 0;
+}
+
+[b-z9kwl2q7w1] .message-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+[b-z9kwl2q7w1] .message-input {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.message-send[b-z9kwl2q7w1] {
+    color: red;
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: mediumseagreen;
+    font-weight: bold;
+}
+
+.message-btns[b-z9kwl2q7w1] {
+    display: flex;
+    gap: 3px;
+}
+.delete-btn[b-z9kwl2q7w1] {
+    background-color: indianred;
+    border: none;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+.edit-btn[b-z9kwl2q7w1] {
+    background-color: cornflowerblue;
+    border: none;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+/* _content/BlooperFE/Shared/MainLayout.razor.rz.scp.css */
+.nav[b-yz4s1t1toj] {
+    background-color: lightgray;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 16px;
+}
+
+.nav-links[b-yz4s1t1toj] {
+    display: flex;
+    gap: 16px;
+}
+
+[b-yz4s1t1toj] .nav-link {
+    color: black;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+[b-yz4s1t1toj] .active-nav-link {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.page[b-yz4s1t1toj] {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.username[b-yz4s1t1toj] {
+    text-transform: capitalize;
+}
+/* _content/BlooperFE/Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-f5d1l1wd2d] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-f5d1l1wd2d] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-f5d1l1wd2d] {
+    font-size: 1.1rem;
+}
+
+.oi[b-f5d1l1wd2d] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-f5d1l1wd2d] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-f5d1l1wd2d] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-f5d1l1wd2d] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-f5d1l1wd2d]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-f5d1l1wd2d]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-f5d1l1wd2d]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-f5d1l1wd2d] {
+        display: none;
+    }
+
+    .collapse[b-f5d1l1wd2d] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+    
+    .nav-scrollable[b-f5d1l1wd2d] {
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}

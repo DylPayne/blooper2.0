@@ -1,0 +1,86 @@
+.messages-container[b-z9kwl2q7w1] {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: calc(100vh - 300px);
+    width: 600px;
+    padding: 20px;
+    border: 3px solid lightgray;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.message-parent[b-z9kwl2q7w1] {
+    max-width: 450px;
+    min-width: 100px;
+    background-color: mediumseagreen;
+    color: black;
+    padding: 7px 15px;
+    border-radius: 3px;
+    align-self: end;
+}
+
+.message-parent-from[b-z9kwl2q7w1] {
+    max-width: 450px;
+    min-width: 100px;
+    background-color: lightgray;
+    color: black;
+    padding: 7px 15px;
+    border-radius: 3px;
+    align-self: end;
+    align-self: start;
+}
+
+.input-container[b-z9kwl2q7w1] {
+    position: sticky;
+    bottom: 0;
+}
+
+[b-z9kwl2q7w1] .message-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+[b-z9kwl2q7w1] .message-input {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.message-send[b-z9kwl2q7w1] {
+    color: red;
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: mediumseagreen;
+    font-weight: bold;
+}
+
+.message-btns[b-z9kwl2q7w1] {
+    display: flex;
+    gap: 3px;
+}
+.delete-btn[b-z9kwl2q7w1] {
+    background-color: indianred;
+    border: none;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+.edit-btn[b-z9kwl2q7w1] {
+    background-color: cornflowerblue;
+    border: none;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}

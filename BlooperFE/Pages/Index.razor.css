@@ -1,0 +1,19 @@
+﻿::deep .login-form {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+::deep .login-form input {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+::deep .login-form button {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}

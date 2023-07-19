@@ -1,0 +1,36 @@
+.nav[b-yz4s1t1toj] {
+    background-color: lightgray;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 16px;
+}
+
+.nav-links[b-yz4s1t1toj] {
+    display: flex;
+    gap: 16px;
+}
+
+[b-yz4s1t1toj] .nav-link {
+    color: black;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+[b-yz4s1t1toj] .active-nav-link {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.page[b-yz4s1t1toj] {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.username[b-yz4s1t1toj] {
+    text-transform: capitalize;
+}

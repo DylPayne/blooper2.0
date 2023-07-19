@@ -1,0 +1,103 @@
+﻿@page "/chat"
+
+@using Data
+@using System.Security.Claims
+@using Newtonsoft.Json
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject HttpClient client
+
+<PageTitle>Blooper Chat</PageTitle>
+
+<div class="main">
+    <h1>Blooper Chat</h1>
+    <br />
+    <AuthorizeView>
+        <Authorized>
+            @if (chatFromApi is null)
+            {
+                <p>Loading chats...</p>
+            }
+            else
+            {
+                <p>Select a chat:</p>
+                <br />
+                <div class="chat-parent">
+                    @foreach (ChatModel chat in chatFromApi)
+                    {
+                        <span class="chat-link-parent">
+                            <NavLink href=@chat.slug class="chat-link">
+                                @chat.username
+                            </NavLink>
+                        </span>
+                    }
+                </div>
+            }
+
+
+        </Authorized>
+        <NotAuthorized>
+            <p>Not logged in</p>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
+
+
+@code {
+    private string username { get; set; }
+    private string id { get; set; }
+    private List<ChatModel> chatFromApi { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+
+        if (user.Identity is not null && user.Identity.IsAuthenticated)
+        {
+            Console.WriteLine("user is not null");
+            username = user.Identity.Name;
+            id = user.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            int uId;
+            bool success = int.TryParse(id, out uId);
+            if (success)
+            {
+                this.chatFromApi = await GetChats(uId);
+            }
+            else
+            {
+                Console.WriteLine("Chould not parse ID!");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Not authed");
+        }
+    }
+
+    private async Task<List<ChatModel>> GetChats(int from_id)
+    {
+        var apiName = $"Message/chats?to_id={from_id}";
+        var httpResponse = await client.GetAsync(apiName);
+
+        Console.WriteLine("Fetching chats");
+
+        List<ChatModel> chats = new List<ChatModel>();
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            chats = JsonConvert.DeserializeObject<List<ChatModel>>(await httpResponse.Content.ReadAsStringAsync());
+            foreach (ChatModel chat in chats)
+            {
+                Console.WriteLine(chat.username);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Failed to fetch chats");
+            Console.WriteLine("Code: " + httpResponse.StatusCode);
+        }
+        return chats;
+    }
+}

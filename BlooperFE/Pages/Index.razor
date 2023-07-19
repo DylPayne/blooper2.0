@@ -1,0 +1,57 @@
+﻿@page "/"
+@using BlooperFE.Data
+@using Newtonsoft.Json
+@using System.Text.Json.Serialization
+@using Data
+@using Providers
+@inject HttpClient client
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<PageTitle>Blooper Home</PageTitle>
+
+<div class="main">
+    <h1>Welcome to Blooper</h1>
+    <br />
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rutrum lectus ac nulla semper, ut venenatis sem tempor. Sed pulvinar fringilla arcu, eu lacinia dui pharetra at. Duis sit amet hendrerit nisl. Pellentesque mattis nulla id tortor finibus, vel tristique est fermentum. Nullam pharetra lorem ac urna lacinia, ac efficitur enim lacinia. Vestibulum sagittis sagittis felis, eu commodo eros maximus vitae. Fusce vel purus a massa sollicitudin tempus a et est. Mauris placerat dolor non felis convallis rutrum. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce placerat libero a turpis faucibus efficitur. Vivamus ullamcorper rutrum leo, et volutpat purus laoreet a. Integer faucibus bibendum fringilla. Curabitur ac mauris vestibulum, laoreet ipsum in, lobortis odio.</p>
+    <br />
+
+    <h3>Please sign in below:</h3>
+    <br />
+
+    <AuthorizeView>
+        <Authorized>
+            <p>Already signed in.</p>
+        </Authorized>
+        <NotAuthorized>
+            <EditForm Model="@user" OnSubmit="@handleLogin" class="login-form" Context="form">
+                <InputText @bind-Value="@user.username" />
+                <button type="submit">Submit</button>
+            </EditForm>
+        </NotAuthorized>
+    </AuthorizeView>
+    
+</div>
+
+
+@code {
+    private UserModel user = new UserModel();
+
+    private async void handleLogin()
+    {
+        var apiName = $"User/get?username={user.username}";
+        var httpResponse = await client.GetAsync(apiName);
+
+        UserModel userResponse = new UserModel();
+
+        Console.WriteLine(httpResponse.StatusCode);
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            UserModel responseData = JsonConvert.DeserializeObject<UserModel>(await httpResponse.Content.ReadAsStringAsync());
+            userResponse = responseData;
+            Console.WriteLine(userResponse.username);
+
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).AuthenticateUser(userResponse.id, userResponse.username);
+            StateHasChanged();
+        }
+    }
+}

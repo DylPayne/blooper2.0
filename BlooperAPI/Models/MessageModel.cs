@@ -5,10 +5,14 @@ namespace Blooper.Models
 {
     public class MessageModel
     {
-        public int id { get; }
+        public int id { get; set; }
         public string text { get; set; }
         public int to_id { get; set; }
         public int from_id { get; set; }
+
+        public MessageModel()
+        {
+        }
 
         public MessageModel(int id, string text, int to_id, int from_id)
         {

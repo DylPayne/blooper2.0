@@ -1,0 +1,61 @@
+﻿@inherits LayoutComponentBase
+@using Data
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<PageTitle>BlooperFE</PageTitle>
+
+<div>
+    <main>
+        <div class="nav">
+            <div class="nav-links">
+                <NavLink href="" class="nav-link" ActiveClass="active-nav-link" Match="NavLinkMatch.All">
+                    Home
+                </NavLink>
+                <NavLink href="/chat" class="nav-link" ActiveClass="active-nav-link">
+                    Chat
+                </NavLink>
+            </div>
+            <div class="author">
+                <AuthorizeView>
+                    <Authorized>
+                        <p class="username">@context.User?.Identity.Name</p>
+                    </Authorized>
+                    <NotAuthorized>
+                        <p>Not logged in</p>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </div>
+        </div>
+
+        <article class="page">
+            <div>
+                @Body
+            </div>
+        </article>
+    </main>
+</div>
+
+@code {
+    private string? username;
+    private string? id;
+
+    //private async Task GetClaimsData()
+    //{
+    //    var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+    //    var user = authState.User;
+
+    //    if (user.Identity is not null)
+    //    {
+    //        username = user.Identity.Name;
+    //    }
+    //}
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("OnInitialized from main");
+    }
+
+    [CascadingParameter]
+    private Task<AuthenticationState>? authState { get; set; }
+}

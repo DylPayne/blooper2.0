@@ -1,0 +1,77 @@
+﻿@using Data
+@using Newtonsoft.Json
+@page "/chat/{id}/edit/{back_id}"
+@inject HttpClient client
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<div class="main">
+    <AuthorizeView>
+        <Authorized>
+            @if (message is null)
+            {
+                <p>Loading message...</p>
+            } else
+            {
+                <p>From: @from_id</p>
+                <br />
+                <div class="messages-container">
+                    <div class="edit-parent">
+                        <EditForm Model="@message" Context="formMessage" class="message-form" OnSubmit="@UpdateMessage">
+                            <InputText @bind-Value="@message.text" class="message-input" />
+                            <button type="submit" class="message-send">Send</button>
+                        </EditForm>
+                    </div>
+                </div>
+            }
+        </Authorized>
+    </AuthorizeView>
+</div>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+    [Parameter]
+    public string back_id { get; set; }
+
+    string text { get; set; }
+    string from_id { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    MessageModel message;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+
+        if (user.Identity is not null && user.Identity.IsAuthenticated)
+        {
+            message = await GetMessage();
+            Console.WriteLine(message.text);
+        }
+    }
+
+    private async Task<MessageModel> GetMessage()
+    {
+        Console.WriteLine("Fetching message...");
+        var response = await client.GetAsync($"Message/message?id={id}");
+        var content = await response.Content.ReadAsStringAsync();
+        var responseMessage = JsonConvert.DeserializeObject<MessageModel>(content);
+        return responseMessage;
+    }
+
+    private async Task UpdateMessage() {
+        try
+        {
+            var response = await client.PutAsync($"Message?id={id}&text={message.text}", null);
+            Console.WriteLine("Message updated!");
+            NavigationManager.NavigateTo($"/chat/{back_id}");
+        } catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+}

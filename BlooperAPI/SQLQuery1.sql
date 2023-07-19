@@ -1,5 +1,9 @@
-﻿CREATE PROCEDURE get_users
+﻿CREATE PROCEDURE update_message
+	@id int,
+	@text varchar(255)
 AS
 BEGIN
-	SELECT * from users
+	UPDATE messages
+	SET text = @text
+	WHERE id = @id
 END

@@ -1,0 +1,49 @@
+﻿@using BlooperFE.Data
+@using Newtonsoft.Json
+@using Data
+@using Providers
+@using Hubs
+@using Components
+
+
+@inject HttpClient client
+
+<div class="main">
+    @if (bloopers is null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <ul class="words-parent">
+            @foreach (Blooper blooper in bloopers)
+            {
+                <li class="word">@blooper.word</li>
+            }
+        </ul>
+    }
+</div>
+
+
+@code {
+    public class Blooper
+    {
+        public int id { get; set; }
+        public string word { get; set; }
+    }
+
+    List<Blooper> bloopers = new List<Blooper>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        bloopers = await GetBloopers();
+    }
+
+    private async Task<List<Blooper>> GetBloopers()
+    {
+        var response = await client.GetAsync($"Bloopers");
+        var content = await response.Content.ReadAsStringAsync();
+        var responseBloopers = JsonConvert.DeserializeObject<List<Blooper>>(content);
+        return responseBloopers;
+    }
+}
