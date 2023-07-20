@@ -84,3 +84,9 @@
     align-items: center;
     border-radius: 3px;
 }
+
+@media (max-width: 600px) {
+    .messages-container[b-z9kwl2q7w1] {
+        width: 100%;
+    }
+}

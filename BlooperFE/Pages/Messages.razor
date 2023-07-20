@@ -23,8 +23,6 @@
             }
             else
             {
-                <p>From: @from_id</p>
-                <br />
                 <div class="messages-container">
                     @foreach (MessageModel message in messages)
                     {
@@ -57,7 +55,7 @@
                     </div>
                 </div>
             }
-            <button @onclick="ShowModal">Show Sensored Words</button>
+            <button @onclick="ShowModal" class="edit-btn">Show Sensored Words</button>
         </Authorized>
         <NotAuthorized>
             <p>Please login</p>
